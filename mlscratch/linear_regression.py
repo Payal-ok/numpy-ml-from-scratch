@@ -41,11 +41,11 @@ class LinearRegression:
             raise ValueError("X and y must have the same number of rows")
 
         n, d = X.shape
-        Xb = np.hstack([np.ones((n, 1)), X])  # add bias column
+        Xb = np.hstack([np.ones((n, 1)), X])  
 
         if self.method == "normal":
             penalty = self.alpha * np.eye(d + 1)
-            penalty[0, 0] = 0.0  # do not penalise the intercept
+            penalty[0, 0] = 0.0  
             w = np.linalg.solve(Xb.T @ Xb + penalty, Xb.T @ y)
             self.loss_history_ = [float(np.mean((Xb @ w - y) ** 2))]
         else:

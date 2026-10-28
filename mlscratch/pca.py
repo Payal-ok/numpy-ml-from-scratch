@@ -33,7 +33,7 @@ class PCA:
         Xc = X - self.mean_
         _, S, Vt = np.linalg.svd(Xc, full_matrices=False)
 
-        # Make the sign of each component deterministic.
+        
         signs = np.sign(Vt[np.arange(len(Vt)), np.abs(Vt).argmax(axis=1)])
         signs[signs == 0] = 1
         Vt = Vt * signs[:, None]
