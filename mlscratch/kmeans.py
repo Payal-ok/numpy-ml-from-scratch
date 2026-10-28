@@ -38,7 +38,7 @@ class KMeans:
                 axis=1,
             )
             total = d2.sum()
-            if total == 0:  # all remaining points coincide with a centroid
+            if total == 0:  
                 centroids.append(X[rng.integers(n)])
                 continue
             centroids.append(X[rng.choice(n, p=d2 / total)])
@@ -63,7 +63,7 @@ class KMeans:
                 members = X[labels == k]
                 if len(members):
                     new_centroids[k] = members.mean(axis=0)
-                else:  # re-seed an empty cluster at a random point
+                else:  
                     new_centroids[k] = X[rng.integers(len(X))]
             shift = np.linalg.norm(new_centroids - centroids)
             centroids = new_centroids
